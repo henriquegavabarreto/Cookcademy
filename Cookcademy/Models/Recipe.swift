@@ -9,8 +9,8 @@ import Foundation
 
 struct Recipe {
     var mainInformation: MainInformation
-    var ingredients: [String]
-    var directions: [String]
+    var ingredients: [Ingredient]
+    var directions: [Direction]
 }
 
 struct MainInformation {
@@ -26,4 +26,24 @@ struct MainInformation {
         case dinner = "Dinner"
         case dessert = "Dessert"
     }
+}
+
+struct Ingredient {
+    var name: String
+    var quantity: Double
+    var unit: Unit
+    
+    enum Unit: String, CaseIterable {
+        case oz = "Ounces"
+        case g = "Grams"
+        case cups = "Cups"
+        case tbs = "Tablespoons"
+        case tsp = "Teaspoons"
+        case none = "No units"
+    }
+}
+
+struct Direction {
+    var description: String
+    var isOptional: Bool
 }
