@@ -13,12 +13,19 @@ struct RecipesListView: View {
     
     var body: some View {
         List {
-            ForEach(recipeData.recipes) { recipe in
+            ForEach(recipes) { recipe in
                 Text(recipe.mainInformation.name)
             }
         }
-        .navigationTitle("All Recipes")
+        .navigationTitle(navigationTitle)
     }
+}
+
+// add computed properties to improve readability and maintainability
+extension RecipesListView {
+    var recipes: [Recipe] { recipeData.recipes }
+    
+    var navigationTitle: String { "All Recipes" }
 }
 
 #Preview {
