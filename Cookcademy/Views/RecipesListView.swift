@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct RecipesListView: View {
+    // declare recipeData with @StateObject wrapper, so the view updates when the model changes
+    @StateObject var recipeData = RecipeData()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List {
+            ForEach(recipeData.recipes) { recipe in
+                Text(recipe.mainInformation.name)
+            }
         }
-        .padding()
+        .navigationTitle("All Recipes")
     }
 }
 
 #Preview {
-    RecipesListView()
+    NavigationView {
+        RecipesListView()
+    }
 }
