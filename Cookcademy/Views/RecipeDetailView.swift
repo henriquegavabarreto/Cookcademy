@@ -10,6 +10,10 @@ import SwiftUI
 struct RecipeDetailView: View {
     let recipe: Recipe
     
+    // declare list colors
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
     var body: some View {
         VStack {
             // recipe's author
@@ -32,7 +36,9 @@ struct RecipeDetailView: View {
                     ForEach(recipe.ingredients.indices, id: \.self) { index in
                         let ingredient = recipe.ingredients[index]
                         Text(ingredient.description)
+                            .foregroundStyle(listTextColor)
                     }
+                    .listRowBackground(listBackgroundColor)
                 }
                 // recipe's directions
                 Section(header: Text("Directions")) {
@@ -44,7 +50,9 @@ struct RecipeDetailView: View {
                             // optional status followed by direction description
                             Text("\(direction.isOptional ? "Optional" : "")" + "\(direction.description)")
                         }
+                        .foregroundStyle(listTextColor)
                     }
+                    .listRowBackground(listBackgroundColor)
                 }
             }
         }
