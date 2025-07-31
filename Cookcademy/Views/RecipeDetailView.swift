@@ -48,7 +48,7 @@ struct RecipeDetailView: View {
                             // step number
                             Text("\(index + 1).").bold()
                             // optional status followed by direction description
-                            Text("\(direction.isOptional ? "Optional" : "")" + "\(direction.description)")
+                            Text("\(direction.isOptional ? "(Optional) " : "")" + "\(direction.description)")
                         }
                         .foregroundStyle(listTextColor)
                     }
