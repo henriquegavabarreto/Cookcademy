@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct RecipesListView: View {
-    // declare recipeData with @StateObject wrapper, so the view updates when the model changes
-    @StateObject var recipeData = RecipeData()
+    // access RecipeData through the environment
+    @EnvironmentObject private var recipeData: RecipeData
+    let category: MainInformation.Category
     
     // declare list colors
     private let listBackgroundColor = AppColor.background
@@ -29,13 +30,15 @@ struct RecipesListView: View {
 
 // add computed properties to improve readability and maintainability
 extension RecipesListView {
-    var recipes: [Recipe] { recipeData.recipes }
+    // get recipes for given category
+    var recipes: [Recipe] { recipeData.recipes(for: category) }
     
-    var navigationTitle: String { "All Recipes" }
+    var navigationTitle: String { "\(category.rawValue) Recipes" }
 }
 
 #Preview {
     NavigationView {
-        RecipesListView()
+        RecipesListView(category: .breakfast)
+            .environmentObject(RecipeData())
     }
 }
