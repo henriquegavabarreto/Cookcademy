@@ -14,6 +14,11 @@ struct Recipe: Identifiable {
     var ingredients: [Ingredient]
     var directions: [Direction]
     
+    // returns validity of recipe - has mainInformation, ingredients and directions
+    var isValid: Bool {
+        !mainInformation.isValid && !ingredients.isEmpty && !directions.isEmpty
+    }
+    
     // creates recipe from given values
     init(mainInformation: MainInformation, ingredients: [Ingredient], directions: [Direction]) {
         self.mainInformation = mainInformation
@@ -32,6 +37,11 @@ struct MainInformation {
     var description: String
     var author: String
     var category: Category
+    
+    // returns validity of main information - has name, description and author
+    var isValid: Bool {
+        !name.isEmpty && !description.isEmpty && !author.isEmpty
+    }
     
     // defines dish categories
     enum Category: String, CaseIterable {
