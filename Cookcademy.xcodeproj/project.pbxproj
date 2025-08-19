@@ -16,6 +16,7 @@
 		968C72F92E3437CB00A37FA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 968C72F82E3437CB00A37FA7 /* Assets.xcassets */; };
 		968C72FC2E3437CB00A37FA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 968C72FB2E3437CB00A37FA7 /* Preview Assets.xcassets */; };
 		968C73042E36EA1400A37FA7 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968C73032E36EA1400A37FA7 /* Recipe.swift */; };
+		9690F3DD2E55254D00FE9047 /* ModifyMainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9690F3DC2E55254D00FE9047 /* ModifyMainInformationView.swift */; };
 		96BBEA552E3BDB6900B34F7A /* ModifyRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BBEA542E3BDB6800B34F7A /* ModifyRecipeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		968C72F82E3437CB00A37FA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		968C72FB2E3437CB00A37FA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		968C73032E36EA1400A37FA7 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		9690F3DC2E55254D00FE9047 /* ModifyMainInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyMainInformationView.swift; sourceTree = "<group>"; };
 		96BBEA542E3BDB6800B34F7A /* ModifyRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				96BBEA542E3BDB6800B34F7A /* ModifyRecipeView.swift */,
+				9690F3DC2E55254D00FE9047 /* ModifyMainInformationView.swift */,
 			);
 			path = ModifyRecipes;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				96BBEA552E3BDB6900B34F7A /* ModifyRecipeView.swift in Sources */,
 				968C72F72E3437C100A37FA7 /* RecipesListView.swift in Sources */,
 				968C72F52E3437C100A37FA7 /* CookcademyApp.swift in Sources */,
+				9690F3DD2E55254D00FE9047 /* ModifyMainInformationView.swift in Sources */,
 				9617ADEE2E3948A600802439 /* AppColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

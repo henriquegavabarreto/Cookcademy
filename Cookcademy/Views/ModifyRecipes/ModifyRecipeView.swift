@@ -24,7 +24,7 @@ struct ModifyRecipeView: View {
             
             switch selection {
                 case .main:
-                    Text("Main Editor")
+                    ModifyMainInformationView(mainInformation: $recipe.mainInformation)
                 case .ingredients:
                     Text("Ingredients Editor")
                 case .directions:
