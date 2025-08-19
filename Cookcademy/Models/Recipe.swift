@@ -16,7 +16,7 @@ struct Recipe: Identifiable {
     
     // returns validity of recipe - has mainInformation, ingredients and directions
     var isValid: Bool {
-        !mainInformation.isValid && !ingredients.isEmpty && !directions.isEmpty
+        mainInformation.isValid && !ingredients.isEmpty && !directions.isEmpty
     }
     
     // creates recipe from given values
