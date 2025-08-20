@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ModifyIngredientView: View {
-    @State var ingredient: Ingredient
+    @Binding var ingredient: Ingredient
     
     var body: some View {
         VStack {
@@ -44,5 +44,5 @@ extension NumberFormatter {
 
 #Preview {
     @State var emptyIngredient = Ingredient(name: "", quantity: 1.0, unit: .none)
-    return ModifyIngredientView(ingredient: emptyIngredient)
+    return ModifyIngredientView(ingredient: $emptyIngredient)
 }
