@@ -14,10 +14,14 @@ struct ModifyIngredientView: View {
     // using dismiss instead of presentationMode because of deprecation
     @Environment(\.dismiss) private var dismiss
     
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
     var body: some View {
         VStack {
             Form {
                 TextField("Ingredient Name", text: $ingredient.name)
+                    .listRowBackground(listBackgroundColor)
                 Stepper(value: $ingredient.quantity, in: 1...100, step: 0.5) {
                     // Create a label that shows current value and let user type value
                     HStack {
@@ -26,11 +30,13 @@ struct ModifyIngredientView: View {
                             .keyboardType(.numbersAndPunctuation)
                     }
                 }
+                .listRowBackground(listBackgroundColor)
                 Picker("Unit", selection: $ingredient.unit) {
                     ForEach(Ingredient.Unit.allCases, id: \.self) { unit in
                         Text(unit.rawValue)
                     }
                 }
+                .listRowBackground(listBackgroundColor)
                 .pickerStyle(MenuPickerStyle())
                 HStack {
                     Spacer()
@@ -40,7 +46,9 @@ struct ModifyIngredientView: View {
                     }
                     Spacer()
                 }
+                .listRowBackground(listBackgroundColor)
             }
+            .foregroundStyle(listTextColor)
         }
     }
 }
