@@ -55,7 +55,7 @@ extension NumberFormatter {
 }
 
 #Preview {
-    @State var emptyIngredient = Ingredient(name: "", quantity: 1.0, unit: .none)
+    @State var emptyIngredient = Ingredient()
     return ModifyIngredientView(ingredient: $emptyIngredient) { ingredient in
         print(ingredient)
     }
