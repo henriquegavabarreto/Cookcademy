@@ -11,6 +11,9 @@ struct ModifyIngredientView: View {
     @Binding var ingredient: Ingredient
     let createAction: ((Ingredient) -> Void)
     
+    // using dismiss instead of presentationMode because of deprecation
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         VStack {
             Form {
@@ -33,6 +36,7 @@ struct ModifyIngredientView: View {
                     Spacer()
                     Button("Save") {
                         createAction(ingredient)
+                        dismiss()
                     }
                     Spacer()
                 }
