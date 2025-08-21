@@ -13,18 +13,22 @@ struct ModifyIngredientsView: View {
     
     var body: some View {
         VStack {
+            let addIngredientView = ModifyIngredientView(ingredient: $newIngredient) { ingredient in
+                ingredients.append(ingredient)
+                newIngredient = Ingredient(name: "", quantity: 0.0, unit: .none)
+            }
             if ingredients.isEmpty {
                 Spacer()
-                NavigationLink("Add the first ingredient", destination: ModifyIngredientView(ingredient: $newIngredient))
+                NavigationLink("Add the first ingredient", destination: addIngredientView)
                 Spacer()
             } else {
                 List {
                     ForEach(ingredients.indices, id: \.self) { index in
                         let ingredient = ingredients[index]
                         Text(ingredient.description)
-                        NavigationLink("Add another ingredient", destination: ModifyIngredientView(ingredient: $newIngredient))
-                            .buttonStyle(PlainButtonStyle())
                     }
+                    NavigationLink("Add another ingredient", destination: addIngredientView)
+                        .buttonStyle(PlainButtonStyle())
                 }
             }
         }
@@ -34,6 +38,5 @@ struct ModifyIngredientsView: View {
 #Preview {
     @State var emptyIngredients = [Ingredient]()
     
-    // wrap in a NavigationView for NavigationLink to work
-    return NavigationView { ModifyIngredientsView(ingredients: $emptyIngredients) }
+    return NavigationView { ModifyIngredientsView(ingredients: $emptyIngredients)}
 }
