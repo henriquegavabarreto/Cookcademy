@@ -12,10 +12,15 @@ struct ModifyDirectionView: View {
     let createAction: (Direction) -> Void
     @Environment(\.dismiss) var dismiss
     
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
     var body: some View {
         Form {
             TextField("Direction Description", text: $direction.description)
+                .listRowBackground(listBackgroundColor)
             Toggle("Optional", isOn: $direction.isOptional)
+                .listRowBackground(listBackgroundColor)
             HStack {
                 Spacer()
                 Button("Save") {
@@ -24,7 +29,9 @@ struct ModifyDirectionView: View {
                 }
                 Spacer()
             }
+            .listRowBackground(listBackgroundColor)
         }
+        .foregroundStyle(listTextColor)
     }
 }
 
