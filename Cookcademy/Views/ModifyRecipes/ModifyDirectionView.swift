@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ModifyDirectionView: View {
     @Binding var direction: Direction
+    let createAction: (Direction) -> Void
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         Form {
@@ -17,7 +19,8 @@ struct ModifyDirectionView: View {
             HStack {
                 Spacer()
                 Button("Save") {
-                    print("save direction")
+                    createAction(direction)
+                    dismiss()
                 }
                 Spacer()
             }
@@ -27,5 +30,8 @@ struct ModifyDirectionView: View {
 
 #Preview {
     @State var direction = Direction(description: "test", isOptional: true)
-    return ModifyDirectionView(direction: $direction)
+    let action: (Direction) -> Void = { direction in
+        print(direction)
+    }
+    return ModifyDirectionView(direction: $direction, createAction: action)
 }
