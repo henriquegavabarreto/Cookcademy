@@ -70,6 +70,17 @@ extension RecipesListView {
     var recipes: [Recipe] { recipeData.recipes(for: category) }
     
     var navigationTitle: String { "\(category.rawValue) Recipes" }
+    
+    // returns binding of a recipe for a given recipe so modifications can be made
+    // using the forms
+    func binding(for recipe: Recipe) -> Binding<Recipe> {
+        // get index of recipe
+        guard let index = recipeData.index(of: recipe) else {
+            fatalError("Recipe not found")
+        }
+        // return binding of the recipe
+        return $recipeData.recipes[index]
+    }
 }
 
 #Preview {
