@@ -28,8 +28,11 @@ protocol ModifyComponentView: View {
     init(component: Binding<Component>, createAction: @escaping (Component) -> Void)
 }
 
+// Shows a list of RecipeComponents and make it possible to add these components to the list
 struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyComponentView>: View where DestinationView.Component == Component {
+    // list of components from a recipe
     @Binding var components: [Component]
+    // empty component that gathers information from user
     @State private var newComponent = Component()
     
     private let listBackgroundColor = AppColor.background
@@ -37,17 +40,20 @@ struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyC
     
     var body: some View {
         VStack {
+            // DestinationView where the user can add a new RecipeComponent
             let addComponentView = DestinationView(component: $newComponent) { component in
                 components.append(component)
                 newComponent = Component()
             }
                 .navigationTitle("Add \(Component.singularName().capitalized)")
             
+            // add a button to add first componenet if there are none
             if components.isEmpty {
                 Spacer()
                 NavigationLink("Add the first \(Component.singularName())", destination: addComponentView)
                 Spacer()
             } else {
+                // show list of current RecipeComponents
                 HStack {
                     Text("\(Component.pluralName().capitalized)")
                         .font(.title)

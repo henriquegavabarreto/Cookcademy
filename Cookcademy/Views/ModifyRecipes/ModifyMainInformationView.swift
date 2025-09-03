@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Form to modify main information of a recipe
 struct ModifyMainInformationView: View {
     private let listBackgroundColor = AppColor.background
     private let listTextColor = AppColor.foreground

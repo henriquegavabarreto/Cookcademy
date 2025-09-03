@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// ModifyIngredient form
 struct ModifyIngredientView: ModifyComponentView {
     @Binding var ingredient: Ingredient
     let createAction: ((Ingredient) -> Void)

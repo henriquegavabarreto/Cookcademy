@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Main view that allows user to modify recipe information
 struct ModifyRecipeView: View {
     // recieves a recipe do be modified
     @Binding var recipe: Recipe
@@ -22,6 +23,7 @@ struct ModifyRecipeView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
             
+            // change View according to picker selection
             switch selection {
                 case .main:
                     ModifyMainInformationView(mainInformation: $recipe.mainInformation)
