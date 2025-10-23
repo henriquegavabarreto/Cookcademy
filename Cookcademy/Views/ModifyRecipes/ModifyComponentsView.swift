@@ -63,7 +63,15 @@ struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyC
                 List {
                     ForEach(components.indices, id: \.self) { index in
                         let component = components[index]
-                        Text(component.description)
+                        
+                        // create a view where user can edit a specific component
+                        let editComponentView = DestinationView(component: $components[index]) { _ in
+                            return
+                        }
+                            .navigationTitle("Edit " + "\(Component.singularName().capitalized)")
+                        
+                        // lead user to the view above on tap
+                        NavigationLink(component.description, destination: editComponentView)
                     }
                     .listRowBackground(listBackgroundColor)
                     NavigationLink("Add another \(Component.singularName())", destination: addComponentView)
