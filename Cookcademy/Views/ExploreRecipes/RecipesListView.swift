@@ -10,7 +10,9 @@ import SwiftUI
 struct RecipesListView: View {
     // access RecipeData through the environment
     @EnvironmentObject private var recipeData: RecipeData
-    let category: MainInformation.Category
+    
+    // viewStyle - MainInformation category or favorite recipes
+    let viewStyle: ViewStyle
     
     // bool that controls sheet presenting status
     @State private var isPresenting = false
@@ -66,10 +68,30 @@ struct RecipesListView: View {
 
 // add computed properties to improve readability and maintainability
 extension RecipesListView {
-    // get recipes for given category
-    var recipes: [Recipe] { recipeData.recipes(for: category) }
+    enum ViewStyle {
+        case favorites
+        case singleCategory(MainInformation.Category)
+    }
     
-    var navigationTitle: String { "\(category.rawValue) Recipes" }
+    // get recipes for given category or favorite recipes
+    var recipes: [Recipe] {
+        switch viewStyle {
+        case let .singleCategory(category):
+            return recipeData.recipes(for: category)
+        case .favorites:
+            return recipeData.favoriteRecipes
+        }
+    }
+    
+    // return navigation title based on viewStyle - category or favotites
+    var navigationTitle: String {
+        switch viewStyle {
+        case let .singleCategory(category):
+            return "\(category.rawValue) Recipes"
+        case .favorites:
+            return "Favorite Recipes"
+        }
+    }
     
     // returns binding of a recipe for a given recipe so modifications can be made
     // using the forms
@@ -85,7 +107,7 @@ extension RecipesListView {
 
 #Preview {
     NavigationView {
-        RecipesListView(category: .breakfast)
+        RecipesListView(viewStyle: .singleCategory(.breakfast))
             .environmentObject(RecipeData())
     }
 }

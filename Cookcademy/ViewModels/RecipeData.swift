@@ -11,6 +11,10 @@ import Foundation
 class RecipeData: ObservableObject {
     @Published var recipes = Recipe.testRecipes
     
+    var favoriteRecipes: [Recipe] {
+        recipes.filter { $0.isFavorite }
+    }
+    
     // return a filtered recipes array based on given category
     func recipes(for category: MainInformation.Category) -> [Recipe] {
         var filteredRecipes = [Recipe]()
