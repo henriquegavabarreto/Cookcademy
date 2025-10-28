@@ -36,6 +36,9 @@ struct RecipesListView: View {
             // adds button to top right
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
+                    newRecipe = Recipe()
+                    // add default category information to recipe
+                    newRecipe.mainInformation.category = recipes.first?.mainInformation.category ?? .breakfast
                     isPresenting = true
                 }, label: {
                     Image(systemName: "plus")
@@ -55,6 +58,10 @@ struct RecipesListView: View {
                         ToolbarItem(placement: .confirmationAction) {
                             if newRecipe.isValid {
                                 Button("Add") {
+                                    // make recipe a favorite when added from favorites tab
+                                    if case .favorites = viewStyle {
+                                        newRecipe.isFavorite = true
+                                    }
                                     recipeData.add(newRecipe)
                                     isPresenting = false
                                 }
